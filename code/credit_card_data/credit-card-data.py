@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import os
+import gdown
 
 #data vis
 import matplotlib.pyplot as plt
@@ -26,9 +27,22 @@ import xgboost as xgb
 import lightgbm as lgb
 
 #read
-current_path = os.getcwd()
-file = '\\datasets\\credit_card_data\\correlationMatrix.csv'
-data = pd.read_csv(current_path + file)
+#current_path = os.getcwd()
+#file = 'https://drive.google.com/file/d/1NfLMXdIlGG5u0TjfuImxVsBK2osqcaI8/view?usp=sharing'
+#data = pd.read_csv(current_path + file)
 
+
+#file_id = "1NfLMXdIlGG5u0TjfuImxVsBK2osqcaI8"
+#url = f"https://drive.google.com/uc?export=download&id={file_id}"
+#data = pd.read_csv(url)
+
+
+file_id = "1NfLMXdIlGG5u0TjfuImxVsBK2osqcaI8"  # Replace with your actual file ID
+url = f"https://drive.google.com/uc?export=download&id={file_id}"
+output = "creditcard.csv"
+gdown.download(url, output, quiet=False)
+
+data = pd.read_csv(output)
 print(data.head())
-#ata.describe()
+data.describe()
+
